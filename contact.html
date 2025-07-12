@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Color Aura</title>
+    <meta
+      name="description"
+      content="Get in touch with Color Aura - we're here to help with your color journey."
+    />
+    <style>
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-Italic.ttf") format("truetype");
+        font-weight: 400;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-BoldItalic.ttf")
+          format("truetype");
+        font-weight: 700;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-Medium.ttf") format("truetype");
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-SemiBold.ttf") format("truetype");
+        font-weight: 600;
+        font-style: normal;
+      }
+      html,
+      body {
+        height: 100%;
+        background: #fff;
+        color: #222;
+        font-family: "Playfair Display", serif;
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      header {
+        background: #fff;
+        border-bottom: none;
+        position: relative;
+        z-index: 1000;
+        padding-top: 24px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+      }
+      .nav-left {
+        display: flex;
+        align-items: center;
+      }
+      .nav-right {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+      .nav-link {
+        text-decoration: none;
+        color: #222;
+        font-family: "Playfair Display", serif;
+        font-weight: 500;
+        font-size: 1.1rem;
+        letter-spacing: 0.02em;
+        transition: color 0.2s;
+      }
+      .nav-link:hover {
+        color: #888;
+      }
+      .nav-link.active {
+        border-bottom: 2px solid #222;
+        padding-bottom: 2px;
+      }
+      .logo {
+        height: 64px;
+        width: auto;
+      }
+      .main-content {
+        background: #f7ece7;
+        padding: 48px 0 64px 0;
+        min-height: 60vh;
+      }
+      .content-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 2rem;
+        line-height: 1.2;
+        text-align: center;
+      }
+      .content-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        color: #444;
+        margin-bottom: 2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        line-height: 1.7;
+      }
+      .contact-section {
+        max-width: 600px;
+        margin: 0 auto 3rem auto;
+        background: #fff;
+        padding: 3rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
+        text-align: center;
+      }
+      .contact-method {
+        margin-bottom: 2.5rem;
+      }
+      .contact-method:last-child {
+        margin-bottom: 0;
+      }
+      .contact-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 0.5rem;
+      }
+      .contact-info {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        color: #444;
+        line-height: 1.6;
+      }
+      .contact-link {
+        color: #222;
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 1px solid #222;
+        transition: color 0.2s;
+      }
+      .contact-link:hover {
+        color: #888;
+        border-bottom-color: #888;
+      }
+      .cta-button {
+        display: inline-block;
+        background: #222;
+        color: #fff;
+        padding: 1rem 2rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: 0.02em;
+        border: 1.2px solid #222;
+        transition: background 0.2s, color 0.2s;
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+        font-family: "Playfair Display", serif;
+        margin-top: 1rem;
+      }
+      .cta-button:hover {
+        background: #fff;
+        color: #222;
+      }
+      .back-to-home {
+        text-align: center;
+        margin-top: 2rem;
+      }
+      footer {
+        background: #fff;
+        padding: 32px 0;
+        border-top: 1px solid #eee;
+      }
+      .footer-content {
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-size: 0.9rem;
+        color: #666;
+      }
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 15px;
+        }
+        .content-title {
+          font-size: 2rem;
+        }
+        .content-text {
+          font-size: 1.1rem;
+        }
+        .contact-section {
+          padding: 2rem;
+        }
+        .nav-right {
+          gap: 1.5rem;
+        }
+        .logo {
+          height: 52px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="nav">
+          <div class="nav-left">
+            <a href="index.html">
+              <img src="assets/logo.png" alt="Color Aura" class="logo" />
+            </a>
+          </div>
+          <div class="nav-right">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="contact.html" class="nav-link active">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <h1 class="content-title">Get in Touch</h1>
+        <p class="content-text">
+          Reach out to us with any questions, feedback, or support needs.
+        </p>
+
+        <div class="contact-section">
+          <div class="contact-method">
+            <h2 class="contact-title">Support</h2>
+            <p class="contact-info">
+              For general inquiries, technical support, or feedback:<br />
+              <a href="mailto:support@coloraura.com" class="contact-link"
+                >support@coloraura.com</a
+              >
+            </p>
+          </div>
+
+          <div class="contact-method">
+            <h2 class="contact-title">Business Information</h2>
+            <p class="contact-info">
+              Madison & Co AB<br />
+              Organisation Number: 559536-6823<br />
+              Sweden
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <p>© 2025 Madison & Co AB</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

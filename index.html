@@ -3,343 +3,277 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Color Aura - Build Your Perfect Wardrobe with Free Color Analysis
-    </title>
+    <title>Color Aura - Rediscover YOU by finding your best colors</title>
     <meta
       name="description"
-      content="Discover your perfect colors with free color analysis and get curated clothing recommendations. Build your ideal wardrobe with Color Aura."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      content="Rediscover yourself with Color Aura. Find your best colors and build your perfect wardrobe."
     />
     <style>
-      * {
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-Bold.ttf") format("truetype");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-Italic.ttf") format("truetype");
+        font-weight: 400;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-BoldItalic.ttf")
+          format("truetype");
+        font-weight: 700;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-Medium.ttf") format("truetype");
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Playfair Display";
+        src: url("assets/fonts/PlayfairDisplay-SemiBold.ttf") format("truetype");
+        font-weight: 600;
+        font-style: normal;
+      }
+      html,
+      body {
+        height: 100%;
+        background: #fff;
+        color: #222;
+        font-family: "Playfair Display", serif;
+        font-size: 16px;
+        line-height: 1.6;
         margin: 0;
         padding: 0;
+      }
+      * {
         box-sizing: border-box;
       }
-
-      body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
-        line-height: 1.6;
-        color: #1a1a1a;
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      }
-
       .container {
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0 auto;
         padding: 0 20px;
       }
-
-      /* Header */
       header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        background: #fff;
+        border-bottom: none;
+        position: relative;
         z-index: 1000;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 24px;
       }
-
-      .header-content {
+      .nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem 0;
+        margin-bottom: 24px;
       }
-
+      .nav-left {
+        display: flex;
+        align-items: center;
+      }
+      .nav-right {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+      .nav-link {
+        text-decoration: none;
+        color: #222;
+        font-family: "Playfair Display", serif;
+        font-weight: 500;
+        font-size: 1.1rem;
+        letter-spacing: 0.02em;
+        transition: color 0.2s;
+      }
+      .nav-link:hover {
+        color: #888;
+      }
       .logo {
-        height: 40px;
+        height: 64px;
         width: auto;
       }
-
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: #1a1a1a;
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-
-      .nav-links a:hover {
-        color: #6366f1;
-      }
-
       /* Hero Section */
       .hero {
-        padding: 120px 0 80px;
-        text-align: center;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        position: relative;
-        overflow: hidden;
+        background: #f7ece7;
+        padding: 64px 0 64px 0;
       }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-        opacity: 0.3;
+      .hero-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
       }
-
-      .hero-content {
-        position: relative;
-        z-index: 2;
+      .hero-text {
+        flex: 1 1 320px;
+        max-width: 450px;
       }
-
-      .hero h1 {
-        font-size: 3.5rem;
+      .hero-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
         font-weight: 700;
-        margin-bottom: 1.5rem;
+        color: #222;
+        margin-bottom: 1rem;
         line-height: 1.2;
       }
-
-      .hero .emphasis {
-        background: linear-gradient(45deg, #fbbf24, #f59e0b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .hero p {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .cta-button {
-        display: inline-block;
-        background: linear-gradient(45deg, #fbbf24, #f59e0b);
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
-      }
-
-      .cta-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 15px 40px rgba(251, 191, 36, 0.4);
-      }
-
-      /* Features Section */
-      .features {
-        padding: 80px 0;
-        background: white;
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 2.5rem;
+      .hero-title .emphasis {
+        font-family: "Playfair Display", serif;
         font-weight: 700;
-        margin-bottom: 3rem;
-        color: #1a1a1a;
+        color: #222;
+        border-bottom: 2px solid #222;
+        padding-bottom: 2px;
       }
-
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-
-      .feature-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        transition: transform 0.3s ease;
-      }
-
-      .feature-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .feature-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(45deg, #667eea, #764ba2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1.5rem;
-        font-size: 2rem;
-        color: white;
-      }
-
-      .feature-card h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        color: #1a1a1a;
-      }
-
-      .feature-card p {
-        color: #6b7280;
+      .hero-sub {
+        font-size: 1.1rem;
+        color: #444;
+        margin-bottom: 1.5rem;
+        font-family: "Playfair Display", serif;
         line-height: 1.6;
       }
-
-      /* App Screenshots */
-      .app-showcase {
-        padding: 80px 0;
-        background: #f8fafc;
-      }
-
-      .screenshots-container {
+      .cta-row {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
+        gap: 1rem;
         flex-wrap: wrap;
-        margin-top: 3rem;
       }
-
-      .screenshot {
-        max-width: 300px;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        transition: transform 0.3s ease;
+      .cta-button,
+      .download-button {
+        display: inline-block;
+        background: #fff;
+        color: #222;
+        padding: 1rem 1.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        letter-spacing: 0.02em;
+        border: 1.2px solid #222;
+        transition: background 0.2s, color 0.2s, border 0.2s;
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+        font-family: "Playfair Display", serif;
       }
-
-      .screenshot:hover {
-        transform: scale(1.05);
+      .cta-button:hover,
+      .download-button:hover {
+        background: #222;
+        color: #fff;
+        border: 1.2px solid #222;
       }
-
-      /* About Section */
-      .about {
-        padding: 80px 0;
-        background: white;
+      .download-button {
+        background: #222;
+        color: #fff;
+        border: 1.2px solid #222;
       }
-
-      .about-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
+      .download-button:hover {
+        background: #fff;
+        color: #222;
+      }
+      .hero-image {
+        flex: 1 1 280px;
+        display: flex;
         align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
       }
-
-      .about-text h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
+      .hero-image img {
+        max-width: 140px;
+        width: 100%;
+        border-radius: 16px;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+        background: #fff;
+      }
+      /* Showcase Section */
+      .showcase {
+        background: #fff;
+        padding: 64px 0 64px 0;
+      }
+      .showcase-row {
+        display: flex;
+        gap: 48px;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .showcase-item {
+        flex: 1 1 260px;
+        max-width: 340px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+      .showcase-item img {
+        width: 100%;
+        max-width: 320px;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.07);
         margin-bottom: 1.5rem;
-        color: #1a1a1a;
+        background: #f7ece7;
+        object-fit: cover;
       }
-
-      .about-text p {
-        font-size: 1.1rem;
-        color: #6b7280;
-        margin-bottom: 1.5rem;
-        line-height: 1.7;
-      }
-
-      .about-image {
+      .showcase-caption {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        color: #222;
         text-align: center;
+        margin-top: 0.5rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
       }
-
-      .about-image img {
-        max-width: 100%;
-        border-radius: 20px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      }
-
       /* Footer */
       footer {
-        background: #1a1a1a;
-        color: white;
-        padding: 60px 0 30px;
+        background: #fff;
+        padding: 48px 0;
+        border-top: 1px solid #eee;
       }
-
       .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
-      }
-
-      .footer-section h3 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-      }
-
-      .footer-section p,
-      .footer-section a {
-        color: #9ca3af;
-        text-decoration: none;
-        line-height: 1.6;
-      }
-
-      .footer-section a:hover {
-        color: white;
-      }
-
-      .footer-bottom {
-        border-top: 1px solid #374151;
-        padding-top: 2rem;
         text-align: center;
-        color: #9ca3af;
+        font-family: "Playfair Display", serif;
+        font-size: 0.9rem;
+        color: #666;
       }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2.5rem;
+      @media (max-width: 900px) {
+        .container {
+          padding: 0 15px;
         }
-
-        .nav-links {
-          display: none;
-        }
-
-        .about-content {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-        }
-
-        .screenshots-container {
+        .hero-inner,
+        .showcase-row {
           flex-direction: column;
+          gap: 32px;
+          align-items: center;
         }
-
-        .screenshot {
-          max-width: 250px;
+        .hero-image img,
+        .showcase-item img {
+          max-width: 90vw;
+        }
+        .showcase-item {
+          max-width: 90vw;
+        }
+        .showcase-row {
+          gap: 32px;
         }
       }
-
-      @media (max-width: 480px) {
-        .hero h1 {
-          font-size: 2rem;
+      @media (max-width: 600px) {
+        .hero-title {
+          font-size: 1.6rem;
         }
-
-        .hero p {
-          font-size: 1.1rem;
+        .hero-sub {
+          font-size: 1rem;
         }
-
-        .section-title {
-          font-size: 2rem;
+        .nav-right {
+          gap: 1.5rem;
+        }
+        .logo {
+          height: 52px;
         }
       }
     </style>
@@ -348,180 +282,80 @@
     <!-- Header -->
     <header>
       <div class="container">
-        <div class="header-content">
-          <img src="assets/logo2.png" alt="Color Aura" class="logo" />
-          <nav>
-            <ul class="nav-links">
-              <li><a href="#features">Features</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-        </div>
+        <nav class="nav">
+          <div class="nav-left">
+            <a href="index.html">
+              <img src="assets/logo.png" alt="Color Aura" class="logo" />
+            </a>
+          </div>
+          <div class="nav-right">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+          </div>
+        </nav>
       </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
-        <div class="hero-content">
-          <h1>
-            Build Your <span class="emphasis">Perfect</span> Wardrobe with Free
-            Color Analysis & Curated Clothing in Your Colors
-          </h1>
-          <p>
-            Discover your unique color palette and get personalized clothing
-            recommendations that make you look and feel amazing.
-          </p>
-          <a href="#download" class="cta-button">Start Your Color Journey</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-      <div class="container">
-        <h2 class="section-title">Why Choose Color Aura?</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <h3>Free Color Analysis</h3>
-            <p>
-              Get your personalized color palette through our advanced
-              AI-powered analysis. Discover which colors make you shine.
-            </p>
+        <div class="hero-inner">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              Rediscover <span style="font-style: italic">YOU</span> by finding
+              your best colors
+            </h1>
+            <div class="hero-sub">
+              Build your
+              <span class="emphasis" style="font-style: italic">perfect</span>
+              wardrobe with free color analysis & curated clothing in your
+              colors
+            </div>
+            <div class="cta-row">
+              <a
+                href="https://apps.apple.com/"
+                class="download-button"
+                target="_blank"
+                >Download the App</a
+              >
+            </div>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon">👗</div>
-            <h3>Curated Recommendations</h3>
-            <p>
-              Receive hand-picked clothing suggestions that perfectly match your
-              color profile and personal style.
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">📱</div>
-            <h3>Smart Shopping</h3>
-            <p>
-              Shop with confidence knowing every item is selected to complement
-              your unique coloring and enhance your natural beauty.
-            </p>
+          <div class="hero-image">
+            <img src="assets/shopping0.png" alt="Color Aura App Interface" />
+            <img src="assets/shopping2.png" alt="Color Aura App Interface" />
+            <img src="assets/shopping3.png" alt="Color Aura App Interface" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- App Showcase -->
-    <section class="app-showcase">
+    <!-- Showcase Section -->
+    <section class="showcase">
       <div class="container">
-        <h2 class="section-title">See Color Aura in Action</h2>
-        <div class="screenshots-container">
-          <img
-            src="assets/Simulator Screenshot - iPhone 16 Pro Max - 2025-07-12 at 09.40.36.png"
-            alt="Color Analysis"
-            class="screenshot"
-          />
-          <img
-            src="assets/Simulator Screenshot - iPhone 16 Pro Max - 2025-07-12 at 09.44.58.png"
-            alt="Wardrobe Builder"
-            class="screenshot"
-          />
-          <img
-            src="assets/Simulator Screenshot - iPhone 16 Pro Max - 2025-07-12 at 09.45.15.png"
-            alt="Shopping Recommendations"
-            class="screenshot"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-      <div class="container">
-        <div class="about-content">
-          <div class="about-text">
-            <h2>Transform Your Style with Science</h2>
-            <p>
-              Color Aura combines the science of color analysis with modern
-              technology to help you build a wardrobe that truly reflects your
-              best self.
-            </p>
-            <p>
-              Our AI-powered platform analyzes your unique coloring, undertones,
-              and preferences to create a personalized color palette that
-              enhances your natural beauty.
-            </p>
-            <p>
-              Join thousands of users who have discovered their perfect colors
-              and transformed their style with Color Aura.
-            </p>
+        <div class="showcase-row">
+          <div class="showcase-item">
+            <img src="assets/shopping6.png" alt="Discover your color season" />
+            <div class="showcase-caption">Discover your color season</div>
           </div>
-          <div class="about-image">
-            <img
-              src="assets/Simulator Screenshot - iPhone 16 Pro Max - 2025-07-12 at 09.45.43.png"
-              alt="Color Aura App"
-            />
+          <div class="showcase-item">
+            <img src="assets/shopping5.png" alt="Find your best colors" />
+            <div class="showcase-caption">Find your best colors</div>
+          </div>
+          <div class="showcase-item">
+            <img src="assets/shopping4.png" alt="Shop Curated Looks" />
+            <div class="showcase-caption">Shop Curated Looks</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
       <div class="container">
         <div class="footer-content">
-          <div class="footer-section">
-            <h3>Color Aura</h3>
-            <p>
-              Build your perfect wardrobe with personalized color analysis and
-              curated clothing recommendations.
-            </p>
-          </div>
-          <div class="footer-section">
-            <h3>Company</h3>
-            <p><strong>Madison & Co AB</strong></p>
-            <p>Organisationsnummer: 559536-6823</p>
-            <p>Formerly: Grundbulten 144568 AB</p>
-          </div>
-          <div class="footer-section">
-            <h3>Contact</h3>
-            <p>
-              Email:
-              <a href="mailto:support@coloraura.com">support@coloraura.com</a>
-            </p>
-            <p>Website: <a href="https://kromora.com">kromora.com</a></p>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p>&copy; 2024 Color Aura by Madison & Co AB. All rights reserved.</p>
+          <p>© 2025 Madison & Co AB</p>
         </div>
       </div>
     </footer>
-
-    <script>
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
-        });
-      });
-
-      // Header background on scroll
-      window.addEventListener("scroll", () => {
-        const header = document.querySelector("header");
-        if (window.scrollY > 50) {
-          header.style.background = "rgba(255, 255, 255, 0.98)";
-        } else {
-          header.style.background = "rgba(255, 255, 255, 0.95)";
-        }
-      });
-    </script>
   </body>
 </html>
