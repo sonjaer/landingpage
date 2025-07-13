@@ -432,12 +432,25 @@
           max-width: 400px;
           padding: 0 16px;
         }
+        .hero-image {
+          flex-basis: auto;
+          min-width: 0;
+          flex-grow: 0;
+        }
       }
 
       @media (max-width: 480px) {
         .hero-text {
           max-width: 320px;
           padding: 0 12px;
+          flex-basis: auto;
+          min-width: 0;
+          flex-grow: 0;
+        }
+        .hero-image {
+          flex-basis: auto;
+          min-width: 0;
+          flex-grow: 0;
         }
       }
     </style>
