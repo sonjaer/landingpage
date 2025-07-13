@@ -7,6 +7,8 @@ class Header {
   getCurrentPage() {
     const path = window.location.pathname;
     if (path.includes("contact.html")) return "contact";
+    if (path.includes("privacy.html")) return "privacy";
+    if (path.includes("terms.html")) return "terms";
     return "home";
   }
 
@@ -27,6 +29,12 @@ class Header {
               <a href="contact.html" class="nav-link ${
                 this.currentPage === "contact" ? "active" : ""
               }">Contact</a>
+              <a href="privacy.html" class="nav-link ${
+                this.currentPage === "privacy" ? "active" : ""
+              }">Privacy</a>
+              <a href="terms.html" class="nav-link ${
+                this.currentPage === "terms" ? "active" : ""
+              }">Terms</a>
             </div>
           </nav>
         </div>
