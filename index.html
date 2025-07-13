@@ -9,101 +9,8 @@
       name="description"
       content="Rediscover yourself with Color Aura. Find your best colors and build your perfect wardrobe."
     />
+    <link rel="stylesheet" href="assets/styles.css" />
     <style>
-      @font-face {
-        font-family: "Playfair Display";
-        src: url("assets/fonts/PlayfairDisplay-Regular.ttf") format("truetype");
-        font-weight: 400;
-        font-style: normal;
-      }
-      @font-face {
-        font-family: "Playfair Display";
-        src: url("assets/fonts/PlayfairDisplay-Bold.ttf") format("truetype");
-        font-weight: 700;
-        font-style: normal;
-      }
-      @font-face {
-        font-family: "Playfair Display";
-        src: url("assets/fonts/PlayfairDisplay-Italic.ttf") format("truetype");
-        font-weight: 400;
-        font-style: italic;
-      }
-      @font-face {
-        font-family: "Playfair Display";
-        src: url("assets/fonts/PlayfairDisplay-BoldItalic.ttf")
-          format("truetype");
-        font-weight: 700;
-        font-style: italic;
-      }
-      @font-face {
-        font-family: "Playfair Display";
-        src: url("assets/fonts/PlayfairDisplay-Medium.ttf") format("truetype");
-        font-weight: 500;
-        font-style: normal;
-      }
-      @font-face {
-        font-family: "Playfair Display";
-        src: url("assets/fonts/PlayfairDisplay-SemiBold.ttf") format("truetype");
-        font-weight: 600;
-        font-style: normal;
-      }
-      html,
-      body {
-        height: 100%;
-        background: #fff;
-        color: #222;
-        font-family: "Playfair Display", serif;
-        font-size: 16px;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-      header {
-        background: #fff;
-        border-bottom: none;
-        position: relative;
-        z-index: 1000;
-        padding-top: 24px;
-      }
-      .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 24px;
-      }
-      .nav-left {
-        display: flex;
-        align-items: center;
-      }
-      .nav-right {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-      }
-      .nav-link {
-        text-decoration: none;
-        color: #222;
-        font-family: "Playfair Display", serif;
-        font-weight: 500;
-        font-size: 1.1rem;
-        letter-spacing: 0.02em;
-        transition: color 0.2s;
-      }
-      .nav-link:hover {
-        color: #888;
-      }
-      .logo {
-        height: 64px;
-        width: auto;
-      }
       /* Hero Section */
       .hero {
         background: #f7ece7;
@@ -230,18 +137,7 @@
         font-style: italic;
         letter-spacing: 0.01em;
       }
-      /* Footer */
-      footer {
-        background: #fff;
-        padding: 48px 0;
-        border-top: 1px solid #eee;
-      }
-      .footer-content {
-        text-align: center;
-        font-family: "Playfair Display", serif;
-        font-size: 0.9rem;
-        color: #666;
-      }
+
       @media (max-width: 900px) {
         .container {
           padding: 0 15px;
@@ -278,24 +174,12 @@
         }
       }
     </style>
+    <script src="assets/header.js"></script>
+    <script src="assets/footer.js"></script>
   </head>
   <body>
-    <!-- Header -->
-    <header>
-      <div class="container">
-        <nav class="nav">
-          <div class="nav-left">
-            <a href="index.html">
-              <img src="assets/logo.png" alt="Color Aura" class="logo" />
-            </a>
-          </div>
-          <div class="nav-right">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="contact.html" class="nav-link">Contact</a>
-          </div>
-        </nav>
-      </div>
-    </header>
+    <!-- Header Component -->
+    <div id="header-container"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -350,13 +234,7 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <p>© 2025 Madison & Co AB</p>
-        </div>
-      </div>
-    </footer>
+    <!-- Footer Component -->
+    <div id="footer-container"></div>
   </body>
 </html>
