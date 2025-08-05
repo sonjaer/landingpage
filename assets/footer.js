@@ -5,7 +5,7 @@ class Footer {
       <footer>
         <div class="container">
           <div class="footer-content">
-            <p>Madison & Co AB | Organisationsnummer: 559536-6823</p>
+            <p>Grundbulten 144568 AB| Organisational Number: 559536-6823 | D-U-N-S® Number: 351516756 </p>
             <p>&copy; 2024 Color Aura. All rights reserved.</p>
           </div>
         </div>
