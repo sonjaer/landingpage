@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <title>Join the Waitlist — Color Aura</title>
+    <meta name="description" content="Join the waitlist" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="assets/header.js"></script>
+    <script src="assets/footer.js"></script>
+    <style>
+      .page-hero {
+        background: #f7ece7;
+        padding: 64px 0;
+      }
+      .form-card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 24px;
+        max-width: 520px;
+        margin: 0 auto;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+      }
+      .form-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.6rem;
+        margin: 0 0 8px 0;
+        color: #222;
+        text-align: center;
+      }
+      .form-subtitle {
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        color: #555;
+        text-align: center;
+        margin: 0 0 20px 0;
+      }
+      .input-row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .email-input {
+        flex: 1 1 260px;
+        padding: 0.9rem 1rem;
+        border-radius: 8px;
+        border: 1.2px solid #222;
+        font-size: 1rem;
+        font-family: "Playfair Display", serif;
+      }
+      .submit-btn {
+        background: #222;
+        color: #fff;
+        border: 1.2px solid #222;
+        padding: 0.9rem 1.3rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: "Playfair Display", serif;
+      }
+      .submit-btn[disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+      .status {
+        margin-top: 12px;
+        font-size: 0.95rem;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        display: none;
+      }
+      .status.show {
+        display: block;
+      }
+      .status.error {
+        color: #b00020;
+        background: #fdecec;
+        border-color: #f5b5b5;
+      }
+      .status.success {
+        color: #2e7d32;
+        background: #e8f5e9;
+        border-color: #a5d6a7;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="form-card">
+          <h1 class="form-title">Join the waitlist</h1>
+          <p class="form-subtitle">Get notified when the app is available</p>
+          <form id="waitlist-email-form" novalidate>
+            <div class="input-row">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="email-input"
+                placeholder="you@example.com"
+                autocomplete="email"
+                inputmode="email"
+                required
+              />
+              <button type="submit" id="submit" class="submit-btn">Join</button>
+            </div>
+            <div
+              id="status"
+              class="status"
+              role="status"
+              aria-live="polite"
+            ></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-container"></div>
+
+    <script>
+      (function () {
+        const form = document.getElementById("waitlist-email-form");
+        const emailInput = document.getElementById("email");
+        const submitBtn = document.getElementById("submit");
+        const statusEl = document.getElementById("status");
+
+        function setStatus(message, type) {
+          statusEl.textContent = message || "";
+          const base = "status";
+          if (!message) {
+            statusEl.className = base;
+            statusEl.style.display = "none";
+            return;
+          }
+          statusEl.className = base + (type ? " " + type : "") + " show";
+          statusEl.style.display = "block";
+        }
+
+        function isValidEmail(email) {
+          // Robust HTML5-like email pattern
+          const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+          return re.test(email);
+        }
+
+        function updateSubmitState() {
+          const email = emailInput.value.trim();
+          const valid = isValidEmail(email);
+          submitBtn.disabled = !valid;
+          if (!email) {
+            setStatus("", "");
+          } else if (!valid) {
+            setStatus("Please enter a valid email address.", "error");
+          } else {
+            setStatus("", "");
+          }
+        }
+
+        emailInput.addEventListener("input", updateSubmitState);
+        emailInput.addEventListener("blur", updateSubmitState);
+        updateSubmitState();
+
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const email = emailInput.value.trim();
+          if (!isValidEmail(email)) {
+            setStatus("Please enter a valid email address.", "error");
+            return;
+          }
+
+          submitBtn.disabled = true;
+          const originalLabel = submitBtn.textContent;
+          submitBtn.textContent = "Submitting...";
+          setStatus("", "");
+          try {
+            const res = await fetch(
+              "https://api.coloraura.shop/api/waitlist/signup",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email: email,
+                  source: window.location.hostname || "landingpage",
+                }),
+              }
+            );
+            const contentType = res.headers.get("content-type") || "";
+            let payload = null;
+            try {
+              if (contentType.includes("application/json")) {
+                payload = await res.json();
+              } else {
+                payload = await res.text();
+              }
+            } catch (_) {}
+
+            if (!res.ok) {
+              const message =
+                (payload && (payload.message || payload.error)) ||
+                (typeof payload === "string" && payload) ||
+                `Request failed with ${res.status}`;
+              throw new Error(message);
+            }
+
+            const successMessage =
+              (payload && (payload.message || payload.status)) ||
+              "You're on the waitlist! Check your inbox soon.";
+            setStatus(successMessage, "success");
+            form.reset();
+          } catch (err) {
+            console.error(err);
+            const message =
+              err && err.message
+                ? err.message
+                : "Something went wrong. Please try again.";
+            setStatus(message, "error");
+          } finally {
+            submitBtn.textContent = originalLabel;
+            updateSubmitState();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
